@@ -1,0 +1,17 @@
+---
+- name: install docker
+  shell: curl -fsSL https://get.docker.com/ | sh
+
+- name: get gitlab-ce-multi-runner repository installer
+  get_url: url=https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.deb.sh dest=/tmp/install_gitlab-ce-multi-runner.sh mode="a+x"
+
+- name: run gitlab-ce-multi-runner repository installer
+  shell: /tmp/install_gitlab-ce-multi-runner.sh
+
+- name: install gitlab-ce-multi-runner package
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - gitlab-ci-multi-runner
+
+- name: show gitlab-ce-multi-runner register command
+  debug: msg="Register a new runner with: sudo gitlab-ci-multi-runner register"
