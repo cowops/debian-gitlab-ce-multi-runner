@@ -14,4 +14,4 @@
     - gitlab-ci-multi-runner
 
 - name: show gitlab-ce-multi-runner register command
-  debug: msg="Register a new runner with: sudo gitlab-ci-multi-runner register"
+  debug: "msg='Register a new runner with: sudo gitlab-ci-multi-runner register'"
