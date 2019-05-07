@@ -10,7 +10,7 @@
 
 - name: install gitlab-ce-multi-runner package
   apt:
-    name: {{ packages }}
+    name: "{{ packages }}"
     state: latest
   vars:
     packages:
